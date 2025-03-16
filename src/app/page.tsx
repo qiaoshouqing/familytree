@@ -241,9 +241,9 @@ export default function Home() {
                         </p>
                     )}
 
-                    <div className="pt-2 flex justify-center">
+                    <div className="pt-2 flex flex-wrap justify-center gap-x-4 gap-y-2">
                         {/* 搜索框 */}
-                        <div className="ml-5 inline-flex rounded-md">
+                        <div className="inline-flex rounded-md">
                             <input
                                 className="border border-blue-300 shadow-sm rounded-md pl-2"
                                 type="text"
@@ -265,7 +265,7 @@ export default function Home() {
                         </div>
 
                         {/* 视图切换按钮 */}
-                        <div className="ml-15 inline-flex rounded-md shadow-sm">
+                        <div className="inline-flex rounded-md shadow-sm">
                             <button
                                 type="button"
                                 className={`px-4 py-2 text-sm font-medium rounded-l-md flex items-center ${
