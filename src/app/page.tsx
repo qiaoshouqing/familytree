@@ -15,6 +15,48 @@ import {
 import { getPublicConfig, getFamilyFullName } from '@/utils/config';
 import { FamilyData, Person } from '@/types/family';
 
+const buildTreeStructure = (people: Person[], searchText?: string) => {
+  // 创建一个映射，用于快速查找人物
+  const personMap = new Map();
+
+  // 首先将所有人物添加到映射中
+  people.forEach(person => {
+      personMap.set(person.id, { ...person, children: [] });
+  });  
+
+  // 根据 fatherId 建立父子关系
+  people.forEach(person => {
+      if (person.fatherId && personMap.has(person.fatherId)) {
+          const father = personMap.get(person.fatherId);
+          if (father) {
+              father.children = [
+                  ...(father.children || []),
+                  personMap.get(person.id),
+              ];
+          }
+      }
+  });
+
+  if (searchText) {
+      // 搜索模式下只返回匹配的节点
+      const searchPerson = (person: Person) => {
+          return person.name.includes(searchText.trim()) ? { ...person, children: [] } : null;
+      };
+
+      // 在所有节点中搜索匹配的节点
+      const matchingPeople = Array.from(personMap.values())
+          .map(person => searchPerson(person))
+          .filter(Boolean);
+
+      return matchingPeople;
+  }
+
+  // 非搜索模式下，直接返回根节点
+  return people
+      .filter(person => !person.fatherId)
+      .map(person => personMap.get(person.id));
+};
+
 export default function Home() {
     const [viewMode, setViewMode] = useState<'list' | 'tree'>('list');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -48,52 +90,25 @@ export default function Home() {
 
     // 当家族数据加载完成后，重新构建树状结构
     useEffect(() => {
-        if (!dataLoading && !dataError) {
-            try {
-                // 创建一个映射，用于快速查找人物
-                const personMap = new Map();
-
-                // 首先将所有人物添加到映射中
-                familyData.generations.forEach(generation => {
-                    generation.people.forEach(person => {
-                        personMap.set(person.id, { ...person, children: [] });
-                    });
-                });
-
-                // 根据 fatherId 建立父子关系
-                familyData.generations.forEach(generation => {
-                    generation.people.forEach(person => {
-                        if (person.fatherId && personMap.has(person.fatherId)) {
-                            const father = personMap.get(person.fatherId);
-                            if (father) {
-                                father.children = [
-                                    ...(father.children || []),
-                                    personMap.get(person.id),
-                                ];
-                            }
-                        }
-                    });
-                });
-
-                // 找到第一代人物（没有 fatherId 的人）
-                const rootPeople = familyData.generations[0].people.map(
-                    (person) => personMap.get(person.id)
-                );
-
-                // 创建树状结构的个人数据
-                setTreeData({
-                    generations: [
-                        {
-                            title: "家族树",
-                            people: rootPeople,
-                        },
-                    ],
-                });
-            } catch (error) {
-                console.error('构建树状结构出错:', error);
-            }
-        }
-    }, [familyData, dataLoading, dataError]);
+      if (!dataLoading && !dataError) {
+          try {
+              const rootPeople = buildTreeStructure(
+                  familyData.generations.flatMap(g => g.people)
+              );
+              
+              setTreeData({
+                  generations: [
+                      {
+                          title: "家族树",
+                          people: rootPeople,
+                      },
+                  ],
+              });
+          } catch (error) {
+              console.error('构建树状结构出错:', error);
+          }
+      }
+  }, [familyData, dataLoading, dataError]);
 
     useEffect(() => {
         // 始终假设需要登录验证 - 真实的验证会在服务器端处理
@@ -157,36 +172,14 @@ export default function Home() {
         } as FamilyData;
 
         if (viewMode === 'tree') {
-            // 递归搜索并构建树结构
-            const searchPerson = (person: Person) => {
-                const clonedPerson = { ...person, children: [] as Person[] };
-                let shouldInclude = person.name.includes(searchText.trim());
-
-                // 递归处理子节点
-                if (person.children) {
-                    person.children.forEach((child) => {
-                        const result = searchPerson(child);
-                        if (result) {
-                            clonedPerson.children.push(result);
-                            shouldInclude = true;
-                        }
-                    });
-                }
-
-                return shouldInclude ? clonedPerson : null;
-            };
-
-            // 处理每个根节点
-            treeData.generations[0].people.forEach(person => {
-                const result = searchPerson(person);
-                if (result) {
-                    results.generations[0].people.push(result);
-                }
-            });
+          const rootPeople = buildTreeStructure(
+            familyData.generations.flatMap(g => g.people),searchText
+        );
+          results.generations[0].people = rootPeople;
         } else {
             familyData.generations.forEach(generation => {
                 generation.people.forEach(person => {
-                    if (person.name.includes(searchText.trim())) {
+                    if (person.name.includes(searchText.trim())) {                      
                         results.generations[0].title = generation.title;
                         results.generations[0].people.push(person);
                     }
