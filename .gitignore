@@ -40,8 +40,4 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# 敏感配置文件
-# removed auth.json
-/config/family-data.json
-
 # 保留示例配置文件
