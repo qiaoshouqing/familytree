@@ -3,17 +3,22 @@
 import { useState } from 'react';
 import { FamilyData, Person } from '@/types/family';
 import { ChevronDownIcon, ChevronRightIcon, UserIcon, CalendarIcon } from '@heroicons/react/24/outline';
+import { highlightMatch } from '@/utils/search';
 
 interface TreeViewProps {
   data: FamilyData;
+  searchTerm?: string;
+  searchInInfo?: boolean;
 }
 
 interface TreeNodeProps {
   person: Person;
   level: number;
+  searchTerm?: string;
+  searchInInfo?: boolean;
 }
 
-const TreeNode = ({ person, level }: TreeNodeProps) => {
+const TreeNode = ({ person, level, searchTerm, searchInInfo }: TreeNodeProps) => {
   const [isExpanded, setIsExpanded] = useState(true);
   const hasChildren = person.children && person.children.length > 0;
   
@@ -44,9 +49,17 @@ const TreeNode = ({ person, level }: TreeNodeProps) => {
             <UserIcon className="h-4 w-4 text-blue-600" />
           </div>
           <div>
-            <span className="font-medium text-gray-800">{person.name}</span>
+            <span className="font-medium text-gray-800">
+              <span dangerouslySetInnerHTML={{ 
+                __html: searchTerm ? highlightMatch(person.name, searchTerm) : person.name 
+              }} />
+            </span>
             {person.info && (
-              <p className="text-gray-600 text-sm mt-1 max-w-xl">{person.info}</p>
+              <p className="text-gray-600 text-sm mt-1 max-w-xl">
+                <span dangerouslySetInnerHTML={{ 
+                  __html: (searchTerm && searchInInfo) ? highlightMatch(person.info, searchTerm) : person.info 
+                }} />
+              </p>
             )}
             {(person.birthYear || person.deathYear) && (
               <div className="flex items-center gap-1 text-gray-500 text-xs mt-1">
@@ -65,7 +78,7 @@ const TreeNode = ({ person, level }: TreeNodeProps) => {
       {hasChildren && isExpanded && (
         <div className="border-l border-gray-200 ml-2 pl-2">
           {person.children?.map((child, index) => (
-            <TreeNode key={index} person={child} level={level + 1} />
+            <TreeNode key={index} person={child} level={level + 1} searchTerm={searchTerm} searchInInfo={searchInInfo} />
           ))}
         </div>
       )}
@@ -73,7 +86,7 @@ const TreeNode = ({ person, level }: TreeNodeProps) => {
   );
 };
 
-export default function TreeView({ data }: TreeViewProps) {
+export default function TreeView({ data, searchTerm, searchInInfo }: TreeViewProps) {
   // 找到第一代人物作为树的根节点
   const rootPeople = data.generations[0]?.people || [];
   
@@ -83,7 +96,7 @@ export default function TreeView({ data }: TreeViewProps) {
         <h2 className="text-xl font-bold text-gray-800 mb-6">家族树状图</h2>
         <div className="overflow-x-auto">
           {rootPeople.map((person, index) => (
-            <TreeNode key={index} person={person} level={0} />
+            <TreeNode key={index} person={person} level={0} searchTerm={searchTerm} searchInInfo={searchInInfo} />
           ))}
         </div>
       </div>

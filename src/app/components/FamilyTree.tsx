@@ -3,9 +3,12 @@
 import { useState, useEffect } from 'react';
 import { FamilyData, Person } from '@/types/family';
 import { UserIcon, CalendarIcon, UserGroupIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
+import { highlightMatch } from '@/utils/search';
 
 interface FamilyTreeProps {
     familyData: FamilyData;
+    searchTerm?: string;
+    searchInInfo?: boolean;
 }
 
 // 创建一个映射，用于快速查找人物
@@ -53,12 +56,16 @@ const PersonCard = ({
     person, 
     personMap,
     sonsMap,
-    scrollToPerson
+    scrollToPerson,
+    searchTerm,
+    searchInInfo
 }: { 
     person: Person; 
     personMap: Map<string, Person>;
     sonsMap: Map<string, Person[]>;
     scrollToPerson: (personId: string) => void;
+    searchTerm?: string;
+    searchInInfo?: boolean;
 }) => {
     const [expanded, setExpanded] = useState(false);
     const father = person.fatherId ? personMap.get(person.fatherId) : undefined;
@@ -87,7 +94,9 @@ const PersonCard = ({
                             <UserIcon className="h-5 w-5 text-blue-600" />
                         </div>
                         <h3 className="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
-                            {person.name}
+                            <span dangerouslySetInnerHTML={{ 
+                                __html: searchTerm ? highlightMatch(person.name, searchTerm) : person.name 
+                            }} />
                         </h3>
                     </div>
                     <div className="text-gray-400">
@@ -140,7 +149,9 @@ const PersonCard = ({
                 )}
                 
                 <p className={`text-gray-600 text-sm leading-relaxed mb-3 ${expanded ? '' : 'line-clamp-3'}`}>
-                    {person.info}
+                    <span dangerouslySetInnerHTML={{ 
+                        __html: (searchTerm && searchInInfo) ? highlightMatch(person.info, searchTerm) : person.info 
+                    }} />
                 </p>
                 {(person.birthYear || person.deathYear) && (
                     <div className="flex items-center gap-2 text-gray-500 text-sm mt-4 pt-4 border-t border-gray-100">
@@ -162,13 +173,17 @@ const Generation = ({
     people, 
     personMap,
     sonsMap,
-    scrollToPerson
+    scrollToPerson,
+    searchTerm,
+    searchInInfo
 }: { 
     title: string; 
     people: Person[]; 
     personMap: Map<string, Person>;
     sonsMap: Map<string, Person[]>;
     scrollToPerson: (personId: string) => void;
+    searchTerm?: string;
+    searchInInfo?: boolean;
 }) => {
     return (
         <div className="mb-10">
@@ -186,6 +201,8 @@ const Generation = ({
                         personMap={personMap}
                         sonsMap={sonsMap}
                         scrollToPerson={scrollToPerson}
+                        searchTerm={searchTerm}
+                        searchInInfo={searchInInfo}
                     />
                 ))}
             </div>
@@ -193,7 +210,7 @@ const Generation = ({
     );
 };
 
-export default function FamilyTree({ familyData }: FamilyTreeProps) {
+export default function FamilyTree({ familyData, searchTerm, searchInInfo }: FamilyTreeProps) {
     const [personMap, setPersonMap] = useState<Map<string, Person>>(new Map());
     const [sonsMap, setSonsMap] = useState<Map<string, Person[]>>(new Map());
     
@@ -224,6 +241,8 @@ export default function FamilyTree({ familyData }: FamilyTreeProps) {
                     personMap={personMap}
                     sonsMap={sonsMap}
                     scrollToPerson={scrollToPerson}
+                    searchTerm={searchTerm}
+                    searchInInfo={searchInInfo}
                 />
             ))}
         </div>

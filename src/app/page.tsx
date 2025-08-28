@@ -5,10 +5,12 @@ import FamilyTree from './components/FamilyTree';
 import TreeView from './components/TreeView';
 import Footer from './components/Footer';
 import LoginForm from './components/LoginForm';
+import SearchBar, { SearchFilters } from './components/SearchBar';
 import { useFamilyData } from '../data/familyDataWithIds';
 import { QueueListIcon, Squares2X2Icon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 import { getPublicConfig, getFamilyFullName } from '@/utils/config';
 import { FamilyData } from '@/types/family';
+import { searchFamilyData, createFilteredFamilyData, SearchResult } from '@/utils/search';
 
 export default function Home() {
   const [viewMode, setViewMode] = useState<'list' | 'tree'>('list');
@@ -16,6 +18,17 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [userName, setUserName] = useState('');
   const { data: familyData, loading: dataLoading, error: dataError } = useFamilyData();
+  
+  // Search related state
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchFilters, setSearchFilters] = useState<SearchFilters>({
+    searchTerm: '',
+    searchInInfo: true,
+    selectedGenerations: [],
+    yearRange: {}
+  });
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [filteredFamilyData, setFilteredFamilyData] = useState<FamilyData>(familyData);
   
   // 从配置中获取是否需要登录的设置和姓氏
   const publicConfig = getPublicConfig();
@@ -78,6 +91,27 @@ export default function Home() {
       }
     }
   }, [familyData, dataLoading, dataError]);
+
+  // Search effect - update filtered data when search changes
+  useEffect(() => {
+    if (!dataLoading && !dataError && familyData) {
+      if (searchTerm || searchFilters.selectedGenerations.length > 0 || 
+          searchFilters.yearRange.start || searchFilters.yearRange.end) {
+        const results = searchFamilyData(familyData, searchTerm, searchFilters);
+        setSearchResults(results);
+        setFilteredFamilyData(createFilteredFamilyData(familyData, results));
+      } else {
+        setSearchResults([]);
+        setFilteredFamilyData(familyData);
+      }
+    }
+  }, [familyData, searchTerm, searchFilters, dataLoading, dataError]);
+
+  // Search handler
+  const handleSearch = (term: string, filters: SearchFilters) => {
+    setSearchTerm(term);
+    setSearchFilters(filters);
+  };
 
   useEffect(() => {
     // 始终假设需要登录验证 - 真实的验证会在服务器端处理
@@ -206,10 +240,39 @@ export default function Home() {
           </div>
         )}
         
+        <div className="max-w-7xl mx-auto px-4">
+          <SearchBar 
+            onSearch={handleSearch}
+            generations={familyData.generations.map(g => g.title)}
+          />
+          
+          {searchResults.length === 0 && (searchTerm || searchFilters.selectedGenerations.length > 0 || 
+           searchFilters.yearRange.start || searchFilters.yearRange.end) && (
+            <div className="text-center text-gray-500 py-8">
+              <p className="text-lg">未找到匹配的家族成员</p>
+              <p className="text-sm">请尝试修改搜索条件</p>
+            </div>
+          )}
+          
+          {searchResults.length > 0 && (
+            <div className="mb-4 text-sm text-gray-600">
+              找到 <span className="font-medium text-blue-600">{searchResults.length}</span> 个匹配结果
+            </div>
+          )}
+        </div>
+        
         {viewMode === 'list' ? (
-          <FamilyTree familyData={familyData} />
+          <FamilyTree 
+            familyData={filteredFamilyData} 
+            searchTerm={searchTerm}
+            searchInInfo={searchFilters.searchInInfo}
+          />
         ) : (
-          <TreeView data={treeData} />
+          <TreeView 
+            data={treeData} 
+            searchTerm={searchTerm}
+            searchInInfo={searchFilters.searchInInfo}
+          />
         )}
       </div>
       
