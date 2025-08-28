@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { MagnifyingGlassIcon, XMarkIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
+import { UI_CONFIG } from '@/utils/constants';
 
 interface SearchBarProps {
     onSearch: (searchTerm: string, filters: SearchFilters) => void;
@@ -30,14 +31,15 @@ export default function SearchBar({ onSearch, generations }: SearchBarProps) {
     
     const filtersPanelRef = useRef<HTMLDivElement>(null);
 
-    const handleSearch = (newSearchTerm?: string, newFilters?: Partial<SearchFilters>) => {
+    // 使用useCallback优化函数
+    const handleSearch = useCallback((newSearchTerm?: string, newFilters?: Partial<SearchFilters>) => {
         const currentSearchTerm = newSearchTerm !== undefined ? newSearchTerm : searchTerm;
         const currentFilters = { ...filters, ...newFilters, searchTerm: currentSearchTerm };
         setFilters(currentFilters);
         onSearch(currentSearchTerm, currentFilters);
-    };
+    }, [searchTerm, filters, onSearch]);
 
-    const clearSearch = () => {
+    const clearSearch = useCallback(() => {
         setSearchTerm('');
         const clearedFilters = {
             searchTerm: '',
@@ -48,21 +50,23 @@ export default function SearchBar({ onSearch, generations }: SearchBarProps) {
         setFilters(clearedFilters);
         setShowFilters(false);
         onSearch('', clearedFilters);
-    };
+    }, [onSearch]);
 
-    const toggleGeneration = (generation: string) => {
+    const toggleGeneration = useCallback((generation: string) => {
         const newSelectedGenerations = filters.selectedGenerations.includes(generation)
             ? filters.selectedGenerations.filter(g => g !== generation)
             : [...filters.selectedGenerations, generation];
         
         handleSearch(undefined, { selectedGenerations: newSelectedGenerations });
-    };
+    }, [filters.selectedGenerations, handleSearch]);
 
-    // 判断是否有活动的筛选器
-    const hasActiveFilters = filters.selectedGenerations.length > 0 || 
-                            filters.yearRange.start || 
-                            filters.yearRange.end || 
-                            !filters.searchInInfo;
+    // 使用useMemo缓存计算结果
+    const hasActiveFilters = useMemo(() => 
+        filters.selectedGenerations.length > 0 || 
+        Boolean(filters.yearRange.start) || 
+        Boolean(filters.yearRange.end) || 
+        !filters.searchInInfo
+    , [filters]);
 
     // 点击外部关闭筛选面板
     useEffect(() => {
@@ -90,7 +94,7 @@ export default function SearchBar({ onSearch, generations }: SearchBarProps) {
                 </div>
                 <input
                     type="text"
-                    className="w-48 pl-9 pr-8 py-2 bg-white border border-gray-200 rounded-md text-sm text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 focus:border-blue-200 shadow-sm transition-colors"
+                    className={`${UI_CONFIG.SEARCH_INPUT_WIDTH} pl-9 pr-8 py-2 bg-white border border-gray-200 rounded-md text-sm text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 focus:border-blue-200 shadow-sm transition-colors`}
                     placeholder="搜索"
                     value={searchTerm}
                     onChange={(e) => {
@@ -125,7 +129,7 @@ export default function SearchBar({ onSearch, generations }: SearchBarProps) {
 
             {/* 筛选面板 */}
             {showFilters && (
-                <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-200 z-10">
+                <div className={`absolute top-full left-0 mt-2 ${UI_CONFIG.FILTER_PANEL_WIDTH} bg-white rounded-lg shadow-lg border border-gray-200 z-10`}>
                     <div className="p-4 space-y-3">
                         {/* 搜索选项 */}
                         <div className="flex items-center justify-between text-sm">

@@ -33,14 +33,16 @@ async function loadConfigOnServer<T>(filename: string, defaultConfig: T): Promis
 
   try {
     // 动态导入fs和path模块(仅在服务器端)
-    const fs = await import('fs');
-    const path = await import('path');
+    const [fs, path] = await Promise.all([
+      import('fs').then(m => m.default),
+      import('path').then(m => m.default)
+    ]);
     
-    const configDir = path.default.join(process.cwd(), 'config');
-    const filePath = path.default.join(configDir, filename);
+    const configDir = path.join(process.cwd(), 'config');
+    const filePath = path.join(configDir, filename);
     
-    if (fs.default.existsSync(filePath)) {
-      const fileContent = fs.default.readFileSync(filePath, 'utf8');
+    if (fs.existsSync(filePath)) {
+      const fileContent = fs.readFileSync(filePath, 'utf8');
       return JSON.parse(fileContent) as T;
     }
   } catch (error) {

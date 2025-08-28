@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import FamilyTree from './components/FamilyTree';
 import TreeView from './components/TreeView';
 import Footer from './components/Footer';
@@ -9,8 +9,9 @@ import SearchBar, { SearchFilters } from './components/SearchBar';
 import { useFamilyData } from '../data/familyDataWithIds';
 import { QueueListIcon, Squares2X2Icon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
 import { getPublicConfig, getFamilyFullName } from '@/utils/config';
-import { FamilyData } from '@/types/family';
 import { searchFamilyData, createFilteredFamilyData, SearchResult } from '@/utils/search';
+import { buildFamilyTree } from '@/utils/familyTree';
+import { AUTH_CONFIG } from '@/utils/constants';
 
 export default function Home() {
   const [viewMode, setViewMode] = useState<'list' | 'tree'>('list');
@@ -28,97 +29,72 @@ export default function Home() {
     yearRange: {}
   });
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
-  const [filteredFamilyData, setFilteredFamilyData] = useState<FamilyData>(familyData);
   
-  // 从配置中获取是否需要登录的设置和姓氏
-  const publicConfig = getPublicConfig();
+  // 使用useMemo缓存配置，避免每次render重新计算
+  const publicConfig = useMemo(() => getPublicConfig(), []);
   const requireAuth = publicConfig.isAuthRequired;
-  const familyFullName = getFamilyFullName();
+  const familyFullName = useMemo(() => getFamilyFullName(), []);
 
-  // 创建空的默认树结构
-  const emptyTreeData: FamilyData = {
-    generations: [
-      {
-        title: "家族树",
-        people: []
-      }
-    ]
-  };
-
-  // 创建树状结构数据
-  const [treeData, setTreeData] = useState(emptyTreeData);
-  
-  // 当家族数据加载完成后，重新构建树状结构
-  useEffect(() => {
-    if (!dataLoading && !dataError) {
-      try {
-        // 创建一个映射，用于快速查找人物
-        const personMap = new Map();
-        
-        // 首先将所有人物添加到映射中
-        familyData.generations.forEach(generation => {
-          generation.people.forEach(person => {
-            personMap.set(person.id, { ...person, children: [] });
-          });
-        });
-        
-        // 根据 fatherId 建立父子关系
-        familyData.generations.forEach(generation => {
-          generation.people.forEach(person => {
-            if (person.fatherId && personMap.has(person.fatherId)) {
-              const father = personMap.get(person.fatherId);
-              if (father) {
-                father.children = [...(father.children || []), personMap.get(person.id)];
-              }
-            }
-          });
-        });
-        
-        // 找到第一代人物（没有 fatherId 的人）
-        const rootPeople = familyData.generations[0].people.map(person => personMap.get(person.id));
-        
-        // 创建树状结构的个人数据
-        setTreeData({
-          generations: [
-            {
-              title: "家族树",
-              people: rootPeople
-            }
-          ]
-        });
-      } catch (error) {
-        console.error('构建树状结构出错:', error);
-      }
+  // 使用useMemo缓存树状结构数据的构建
+  const treeData = useMemo(() => {
+    if (dataLoading || dataError || !familyData.generations.length) {
+      return {
+        generations: [
+          {
+            title: "家族树",
+            people: []
+          }
+        ]
+      };
     }
+    return buildFamilyTree(familyData);
   }, [familyData, dataLoading, dataError]);
 
-  // Search effect - update filtered data when search changes
+  // 使用useMemo缓存过滤后的家族数据
+  const filteredFamilyData = useMemo(() => {
+    if (searchResults.length > 0) {
+      return createFilteredFamilyData(familyData, searchResults);
+    }
+    return familyData;
+  }, [familyData, searchResults]);
+
+  // 使用useCallback缓存搜索处理函数
+  const handleSearch = useCallback((term: string, filters: SearchFilters) => {
+    setSearchTerm(term);
+    setSearchFilters(filters);
+  }, []);
+
+  // Search effect - 使用useEffect处理搜索逻辑
   useEffect(() => {
-    if (!dataLoading && !dataError && familyData) {
+    if (!dataLoading && !dataError && familyData.generations.length) {
       if (searchTerm || searchFilters.selectedGenerations.length > 0 || 
           searchFilters.yearRange.start || searchFilters.yearRange.end) {
         const results = searchFamilyData(familyData, searchTerm, searchFilters);
         setSearchResults(results);
-        setFilteredFamilyData(createFilteredFamilyData(familyData, results));
       } else {
         setSearchResults([]);
-        setFilteredFamilyData(familyData);
       }
     }
   }, [familyData, searchTerm, searchFilters, dataLoading, dataError]);
 
-  // Search handler
-  const handleSearch = (term: string, filters: SearchFilters) => {
-    setSearchTerm(term);
-    setSearchFilters(filters);
-  };
+  // 使用useCallback缓存认证相关函数
+  const handleLoginSuccess = useCallback(() => {
+    setIsAuthenticated(true);
+  }, []);
+  
+  const handleLogout = useCallback(() => {
+    // 清除验证信息 - 使用常量
+    localStorage.removeItem(AUTH_CONFIG.STORAGE_KEYS.AUTH_TOKEN);
+    localStorage.removeItem(AUTH_CONFIG.STORAGE_KEYS.AUTH_TIME);
+    setIsAuthenticated(false);
+  }, []);
 
   useEffect(() => {
     // 始终假设需要登录验证 - 真实的验证会在服务器端处理
     
-    // 检查是否已经验证过
-    const token = localStorage.getItem('auth_token');
-    const authTime = localStorage.getItem('auth_time');
+    // 检查是否已经验证过 - 使用常量
+    const token = localStorage.getItem(AUTH_CONFIG.STORAGE_KEYS.AUTH_TOKEN);
+    const authTime = localStorage.getItem(AUTH_CONFIG.STORAGE_KEYS.AUTH_TIME);
     
     if (token && authTime) {
       try {
@@ -128,36 +104,25 @@ export default function Home() {
         const expirationTime = parsedToken.exp;
         const currentTime = Date.now();
         
-        // 检查token是否过期（24小时）
+        // 检查token是否过期
         if (currentTime < expirationTime) {
           setIsAuthenticated(true);
           setUserName(parsedToken.name || '');
         } else {
           // 清除过期的token
-          localStorage.removeItem('auth_token');
-          localStorage.removeItem('auth_time');
+          localStorage.removeItem(AUTH_CONFIG.STORAGE_KEYS.AUTH_TOKEN);
+          localStorage.removeItem(AUTH_CONFIG.STORAGE_KEYS.AUTH_TIME);
         }
       } catch (error) {
         console.error('Token解析错误:', error);
         // token解析错误，清除
-        localStorage.removeItem('auth_token');
-        localStorage.removeItem('auth_time');
+        localStorage.removeItem(AUTH_CONFIG.STORAGE_KEYS.AUTH_TOKEN);
+        localStorage.removeItem(AUTH_CONFIG.STORAGE_KEYS.AUTH_TIME);
       }
     }
     
     setLoading(false);
   }, []);
-
-  const handleLoginSuccess = () => {
-    setIsAuthenticated(true);
-  };
-  
-  const handleLogout = () => {
-    // 清除验证信息
-    localStorage.removeItem('auth_token');
-    localStorage.removeItem('auth_time');
-    setIsAuthenticated(false);
-  };
 
   // 显示加载状态
   if (loading || dataLoading) {

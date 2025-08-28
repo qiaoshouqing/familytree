@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { FamilyData, Person } from '@/types/family';
 import { ChevronDownIcon, ChevronRightIcon, UserIcon, CalendarIcon } from '@heroicons/react/24/outline';
 import { highlightMatch } from '@/utils/search';
+import { ANIMATION_DELAYS, CSS_CLASSES } from '@/utils/constants';
 
 interface TreeViewProps {
   data: FamilyData;
@@ -26,15 +27,17 @@ const isPersonMatch = (person: Person, searchTerm: string, searchInInfo: boolean
   const lowerSearchTerm = searchTerm.toLowerCase();
   const nameMatch = person.name.toLowerCase().includes(lowerSearchTerm);
   const infoMatch = searchInInfo && person.info && person.info.toLowerCase().includes(lowerSearchTerm);
-  const yearMatch = person.birthYear?.toString().includes(lowerSearchTerm) || 
-                   person.deathYear?.toString().includes(lowerSearchTerm);
+  const yearMatch = (person.birthYear?.toString().includes(lowerSearchTerm) || false) || 
+                   (person.deathYear?.toString().includes(lowerSearchTerm) || false);
   
-  return nameMatch || infoMatch || yearMatch;
+  return nameMatch || !!infoMatch || yearMatch;
 };
 
 const TreeNode = ({ person, level, searchTerm, searchInInfo, firstMatchId }: TreeNodeProps) => {
   const [isExpanded, setIsExpanded] = useState(true);
+  const [isHighlighted, setIsHighlighted] = useState(false);
   const nodeRef = useRef<HTMLDivElement>(null);
+  const timeoutRefs = useRef<(NodeJS.Timeout | null)[]>([]);
   const hasChildren = person.children && person.children.length > 0;
   const isFirstMatch = person.id === firstMatchId;
   
@@ -42,28 +45,57 @@ const TreeNode = ({ person, level, searchTerm, searchInInfo, firstMatchId }: Tre
     setIsExpanded(!isExpanded);
   };
 
-  // 如果是第一个匹配项，滚动到该位置
+  // 清理所有timeout的函数
+  const clearAllTimeouts = () => {
+    timeoutRefs.current.forEach(timeout => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+    });
+    timeoutRefs.current = [];
+  };
+
+  // 如果是第一个匹配项，滚动到该位置 - 修复内存泄漏
   useEffect(() => {
     if (isFirstMatch && nodeRef.current) {
-      setTimeout(() => {
-        nodeRef.current?.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'center' 
-        });
-        // 添加高亮效果
-        nodeRef.current?.classList.add('ring-2', 'ring-blue-400', 'bg-blue-50');
-        setTimeout(() => {
-          nodeRef.current?.classList.remove('ring-2', 'ring-blue-400', 'bg-blue-50');
-        }, 2000);
-      }, 100);
+      // 清理之前的timeout
+      clearAllTimeouts();
+
+      const scrollTimeout = setTimeout(() => {
+        if (nodeRef.current) {
+          nodeRef.current.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+          });
+          // 使用React state代替直接DOM操作
+          setIsHighlighted(true);
+          
+          const highlightTimeout = setTimeout(() => {
+            setIsHighlighted(false);
+          }, ANIMATION_DELAYS.HIGHLIGHT_DURATION);
+          
+          timeoutRefs.current.push(highlightTimeout);
+        }
+      }, ANIMATION_DELAYS.SCROLL_TO_MATCH);
+      
+      timeoutRefs.current.push(scrollTimeout);
     }
+
+    // cleanup函数 - 防止内存泄漏
+    return () => {
+      clearAllTimeouts();
+    };
   }, [isFirstMatch]);
 
   return (
     <div className="ml-6">
       <div 
         ref={nodeRef}
-        className="flex items-center py-2 hover:bg-gray-50 rounded-md -ml-2 pl-2 cursor-pointer transition-all duration-300"
+        className={`flex items-center py-2 hover:bg-gray-50 rounded-md -ml-2 pl-2 cursor-pointer transition-all duration-300 ${
+          isHighlighted 
+            ? `${CSS_CLASSES.HIGHLIGHT.RING} ${CSS_CLASSES.HIGHLIGHT.RING_COLOR} ${CSS_CLASSES.HIGHLIGHT.BACKGROUND}`
+            : ''
+        }`}
         onClick={toggleExpand}
       >
         {hasChildren ? (
