@@ -240,12 +240,16 @@ export default function Home() {
           </div>
         )}
         
-        <div className="max-w-7xl mx-auto px-4">
-          <SearchBar 
-            onSearch={handleSearch}
-            generations={familyData.generations.map(g => g.title)}
-          />
+        <div className="max-w-7xl mx-auto px-4 mb-6">
+          {/* 搜索框 */}
+          <div className="flex justify-end mb-4">
+            <SearchBar 
+              onSearch={handleSearch}
+              generations={familyData.generations.map(g => g.title)}
+            />
+          </div>
           
+          {/* 搜索结果提示 */}
           {searchResults.length === 0 && (searchTerm || searchFilters.selectedGenerations.length > 0 || 
            searchFilters.yearRange.start || searchFilters.yearRange.end) && (
             <div className="text-center text-gray-500 py-8">
@@ -255,7 +259,7 @@ export default function Home() {
           )}
           
           {searchResults.length > 0 && (
-            <div className="mb-4 text-sm text-gray-600">
+            <div className="text-sm text-gray-600 text-center mb-4">
               找到 <span className="font-medium text-blue-600">{searchResults.length}</span> 个匹配结果
             </div>
           )}
