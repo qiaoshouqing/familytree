@@ -1,162 +1,1554 @@
 {
   "generations": [
     {
-      "title": "第一世",
+      "title": "第73世",
       "people": [
         {
-          "id": "bai-meng-xiong",
-          "name": "白萌堂",
-          "birthYear": 1820,
-          "deathYear": 1900,
-          "info": "大宅门创始人，太医院御医，生三子：白颖园、白颖轩、白颖宇"
+          "id": "gen73-1",
+          "name": "映龙",
+          "info": "配□氏，生三子：运娣、汉标、女生",
+          "fatherId": null,
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen73-2",
+          "name": "馨香",
+          "info": "配□氏，生三子：毛五、□□、火金",
+          "fatherId": null,
+          "birthYear": null,
+          "deathYear": null
         }
       ]
     },
     {
-      "title": "第二世",
+      "title": "第74世",
       "people": [
         {
-          "id": "bai-ying-yuan",
-          "name": "白颖园",
-          "birthYear": 1845,
-          "deathYear": 1925,
-          "info": "长子，继承家业，妻李氏，生二子：白景怡、白景泗",
-          "fatherId": "bai-meng-xiong"
+          "id": "gen74-1",
+          "name": "运娣",
+          "info": "配谢、丘氏，生五子：乙秀、进秀、锦秀、纯秀、龙秀",
+          "fatherId": "gen73-1",
+          "birthYear": null,
+          "deathYear": null
         },
         {
-          "id": "bai-ying-xuan",
-          "name": "白颖轩",
-          "birthYear": 1850,
-          "deathYear": 1895,
-          "info": "次子，妻白文氏（二奶奶），生一子白景琦，生一女白玉婷",
-          "fatherId": "bai-meng-xiong"
+          "id": "gen74-2",
+          "name": "汉标",
+          "info": "配□氏，生二子：庚妹、日保",
+          "fatherId": "gen73-1",
+          "birthYear": null,
+          "deathYear": null
         },
         {
-          "id": "bai-ying-yu",
-          "name": "白颖宇",
-          "birthYear": 1855,
-          "deathYear": 1938,
-          "info": "三子，纨绔子弟，妻周氏，生一子白景武，生一女白玉芬",
-          "fatherId": "bai-meng-xiong"
+          "id": "gen74-3",
+          "name": "女生",
+          "info": "配□氏，生子：荣生",
+          "fatherId": "gen73-1",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen74-4",
+          "name": "毛五",
+          "info": "配□氏，生子：运连",
+          "fatherId": "gen73-2",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen74-5",
+          "name": "□□",
+          "info": "馨香次子，配□氏，生子：汉文",
+          "fatherId": "gen73-2",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen74-6",
+          "name": "火金",
+          "info": "配李氏，生子：进泉",
+          "fatherId": "gen73-2",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen74-7",
+          "name": "官运",
+          "info": "配范、李氏，生二子：日进、跋祗（化名）",
+          "fatherId": null,
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen74-8",
+          "name": "新南",
+          "info": "配□氏，生二子：锦元、海元",
+          "fatherId": null,
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen74-9",
+          "name": "烂杉巾",
+          "info": "花名，配张氏，生子：添凤",
+          "fatherId": null,
+          "birthYear": null,
+          "deathYear": null
         }
       ]
     },
     {
-      "title": "第三世",
+      "title": "第75世",
       "people": [
         {
-          "id": "bai-jing-yi",
-          "name": "白景怡",
-          "birthYear": 1870,
-          "deathYear": 1955,
-          "info": "白颖园长子，继承医业，妻王氏，生一子白占元",
-          "fatherId": "bai-ying-yuan"
+          "id": "gen75-1",
+          "name": "乙秀",
+          "info": "配陈、黄、罗氏，生三子：桂祥、安胜、安康",
+          "fatherId": "gen74-1",
+          "birthYear": null,
+          "deathYear": null
         },
         {
-          "id": "bai-jing-si",
-          "name": "白景泗",
-          "birthYear": 1873,
-          "deathYear": 1958,
-          "info": "白颖园次子，妻赵氏，生一子白占光",
-          "fatherId": "bai-ying-yuan"
+          "id": "gen75-2",
+          "name": "进秀",
+          "info": "配刁、李氏，生子：炳祥；生女：伟萍",
+          "fatherId": "gen74-1",
+          "birthYear": null,
+          "deathYear": null
         },
         {
-          "id": "bai-jing-qi",
-          "name": "白景琦",
-          "birthYear": 1880,
-          "deathYear": 1970,
-          "info": "白颖轩独子，大宅门核心人物，原配黄春，继娶杨九红、李香秀，生四子：白敬业、白敬功、白敬生、白敬堂",
-          "fatherId": "bai-ying-xuan"
+          "id": "gen75-3",
+          "name": "锦秀",
+          "info": "配王氏，生四子：佛进、佛云、佛初、佛祥",
+          "fatherId": "gen74-1",
+          "birthYear": null,
+          "deathYear": null
         },
         {
-          "id": "bai-jing-wu",
-          "name": "白景武",
-          "birthYear": 1885,
-          "deathYear": 1960,
-          "info": "白颖宇之子，妻孙氏，生一子白占海",
-          "fatherId": "bai-ying-yu"
+          "id": "gen75-4",
+          "name": "龙秀",
+          "info": "配张玲香，生二子：明堂、明德；生三女：辉霞、宝群、宝平",
+          "fatherId": "gen74-1",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen75-5",
+          "name": "庚妹",
+          "info": "配潘氏，生三子：桂凤、桂泉、金凤",
+          "fatherId": "gen74-2",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen75-6",
+          "name": "日保",
+          "info": "配肖氏，生二子：佛海、佛水",
+          "fatherId": "gen74-2",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen75-7",
+          "name": "荣生",
+          "info": "配陈氏，生三子：佛泉、佛松、佛运",
+          "fatherId": "gen74-3",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen75-8",
+          "name": "运连",
+          "info": "配陈氏，生子：凤泉",
+          "fatherId": "gen74-4",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen75-9",
+          "name": "汉文",
+          "info": "配□氏，生子：运水",
+          "fatherId": "gen74-5",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen75-10",
+          "name": "进泉",
+          "info": "配□氏，生子：玉祥",
+          "fatherId": "gen74-6",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen75-11",
+          "name": "日进",
+          "info": "配□氏，生四子：耀泉、耀昌、耀明、耀口；生一女",
+          "fatherId": "gen74-7",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen75-12",
+          "name": "跋祗",
+          "info": "化名，配□氏，生子：耀来",
+          "fatherId": "gen74-7",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen75-13",
+          "name": "锦元",
+          "info": "配陈氏，生子：佛金",
+          "fatherId": "gen74-8",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen75-14",
+          "name": "海元",
+          "info": "配刘氏，生子：清发",
+          "fatherId": "gen74-8",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen75-15",
+          "name": "添凤",
+          "info": "配王、刘氏，生四子：坤华、坤荣、亦华、亦球",
+          "fatherId": "gen74-9",
+          "birthYear": null,
+          "deathYear": null
         }
       ]
     },
     {
-      "title": "第四世",
+      "title": "第76世",
       "people": [
         {
-          "id": "bai-zhan-yuan",
-          "name": "白占元",
-          "birthYear": 1900,
-          "deathYear": 1980,
-          "info": "白景怡之子，投身革命，妻何琪，生一子白建国",
-          "fatherId": "bai-jing-yi"
+          "id": "gen76-1",
+          "name": "桂祥",
+          "info": "配钟氏，生四子：坤胜、坤泉、森华、修华；生四女：仕珍、仕英、仕琼、仕文",
+          "fatherId": "gen75-1",
+          "birthYear": null,
+          "deathYear": null
         },
         {
-          "id": "bai-zhan-guang",
-          "name": "白占光",
-          "birthYear": 1905,
-          "deathYear": 1985,
-          "info": "白景泗之子，妻吴氏，生一女白晓梅",
-          "fatherId": "bai-jing-si"
+          "id": "gen76-2",
+          "name": "安胜",
+          "info": "配赖唐英，生五子：伟强、伟清、伟洪、伟雄、伟龙；生二女：梅英、梅香",
+          "fatherId": "gen75-1",
+          "birthYear": null,
+          "deathYear": null
         },
         {
-          "id": "bai-jing-ye",
-          "name": "白敬业",
-          "birthYear": 1903,
-          "deathYear": 1965,
-          "info": "白景琦长子，纨绔败家，妻唐幼琼，生一子白占安",
-          "fatherId": "bai-jing-qi"
+          "id": "gen76-3",
+          "name": "安康",
+          "info": "配刘慈英，生四子：伟钦、伟光、伟枢、伟彬",
+          "fatherId": "gen75-1",
+          "birthYear": null,
+          "deathYear": null
         },
         {
-          "id": "bai-jing-gong",
-          "name": "白敬功",
-          "birthYear": 1908,
-          "deathYear": 1992,
-          "info": "白景琦次子，继承家业，妻周氏，生一子白占平",
-          "fatherId": "bai-jing-qi"
+          "id": "gen76-4",
+          "name": "炳祥",
+          "info": "配李氏，生二子：平森、平环；生女：彩珍",
+          "fatherId": "gen75-2",
+          "birthYear": null,
+          "deathYear": null
         },
         {
-          "id": "bai-zhan-hai",
-          "name": "白占海",
-          "birthYear": 1910,
-          "deathYear": 1990,
-          "info": "白景武之子，妻李氏，生一子白建军",
-          "fatherId": "bai-jing-wu"
+          "id": "gen76-5",
+          "name": "佛进",
+          "info": "配朱氏，生二子：焕新、焕森；生五女：勤招、纯招、慈英、慈珍、慈梅",
+          "fatherId": "gen75-3",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-6",
+          "name": "佛云",
+          "info": "配何氏，生子：金波；生女：春香",
+          "fatherId": "gen75-3",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-7",
+          "name": "佛初",
+          "info": "配刁凤娣，生子：春胜",
+          "fatherId": "gen75-3",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-8",
+          "name": "佛祥",
+          "info": "配刘氏，生子：胜威；生三女：胜英、胜兰、胜香",
+          "fatherId": "gen75-3",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-9",
+          "name": "桂凤",
+          "info": "配彭氏，生三子：元松、云松、添松；生三女：进招、金招、来英",
+          "fatherId": "gen75-5",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-10",
+          "name": "桂泉",
+          "info": "配彭氏，生四子：元波、汉波、文波、志波；生三女：顺招、顺英、银英",
+          "fatherId": "gen75-5",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-11",
+          "name": "佛海",
+          "info": "配陈氏，子女居荷兰，立子：祥仁",
+          "fatherId": "gen75-6",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-12",
+          "name": "佛水",
+          "info": "配□氏，生四子：福强、福胜、福安、福昌，均在荷兰定居",
+          "fatherId": "gen75-6",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-13",
+          "name": "佛泉",
+          "info": "配伍氏，生四子：茂祥、茂文、茂强、泽华",
+          "fatherId": "gen75-7",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-14",
+          "name": "佛松",
+          "info": "配何氏，生二子：凤元、伟元",
+          "fatherId": "gen75-7",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-15",
+          "name": "凤泉",
+          "info": "配刘茂娣，生三子：云添、维添、宏添；生六女：坤英、森招、清英、清招、美兰、清兰",
+          "fatherId": "gen75-8",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-16",
+          "name": "运水",
+          "info": "配温氏，生子：佛贤",
+          "fatherId": "gen75-9",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-17",
+          "name": "玉祥",
+          "info": "配宋仕兰，生二子：浩辉、文辉",
+          "fatherId": "gen75-10",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-18",
+          "name": "耀泉",
+          "info": "配廖胜娣，生子：佛佑",
+          "fatherId": "gen75-11",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-19",
+          "name": "耀来",
+          "info": "配胡伟招，生三子：佑添、佑华、佑中；生二女：佑香、香兰",
+          "fatherId": "gen75-12",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-20",
+          "name": "佛金",
+          "info": "配□氏，生子：伟云",
+          "fatherId": "gen75-13",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-21",
+          "name": "清发",
+          "info": "配江氏，生四子：伟浩、伟华、伟云、伟添；生二女：伟香、琼芳",
+          "fatherId": "gen75-14",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-22",
+          "name": "坤华",
+          "info": "配潘、黄氏，立子：玉庭，生子：汉湘",
+          "fatherId": "gen75-15",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-23",
+          "name": "坤荣",
+          "info": "配王氏，生二子：玉良、伟良；生二女：良娣、巧红",
+          "fatherId": "gen75-15",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-24",
+          "name": "亦华",
+          "info": "配王彦娣，生二子：经伟、经威；生女：小芳",
+          "fatherId": "gen75-15",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-25",
+          "name": "亦球",
+          "info": "配何凤兰，生二子：新恩、新伟",
+          "fatherId": "gen75-15",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-26",
+          "name": "金元",
+          "info": "配陈氏，生二子：晋朋、晋湘",
+          "fatherId": null,
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen76-27",
+          "name": "金红",
+          "info": "配刘氏，生二子：振南、振坤",
+          "fatherId": null,
+          "birthYear": null,
+          "deathYear": null
         }
       ]
     },
     {
-      "title": "第五世",
+      "title": "第77世",
       "people": [
         {
-          "id": "bai-jian-guo",
-          "name": "白建国",
-          "birthYear": 1930,
-          "deathYear": 2010,
-          "info": "白占元之子，工程师，妻张丽华，生一子白浩然",
-          "fatherId": "bai-zhan-yuan"
+          "id": "gen77-1",
+          "name": "坤胜",
+          "info": "配钟坤招，生子：新球",
+          "fatherId": "gen76-1",
+          "birthYear": null,
+          "deathYear": null
         },
         {
-          "id": "bai-zhan-an",
-          "name": "白占安",
-          "birthYear": 1935,
-          "deathYear": 2005,
-          "info": "白敬业之子，妻王秀兰，生一女白雨欣",
-          "fatherId": "bai-jing-ye"
+          "id": "gen77-2",
+          "name": "森华",
+          "info": "配陈惠明，生二子：新宇、新春；生二女：红娟、红英",
+          "fatherId": "gen76-1",
+          "birthYear": null,
+          "deathYear": null
         },
         {
-          "id": "bai-zhan-ping",
-          "name": "白占平",
-          "birthYear": 1940,
-          "deathYear": 2020,
-          "info": "白敬功之子，商人，妻陈美玲，生一子白浩宇",
-          "fatherId": "bai-jing-gong"
+          "id": "gen77-3",
+          "name": "修华",
+          "info": "配罗威梅，生二子：新民、新龙；生女：晓春",
+          "fatherId": "gen76-1",
+          "birthYear": null,
+          "deathYear": null
         },
         {
-          "id": "bai-jian-jun",
-          "name": "白建军",
-          "birthYear": 1945,
-          "deathYear": 2015,
-          "info": "白占海之子，医生，妻刘芳，生一子白浩轩",
-          "fatherId": "bai-zhan-hai"
+          "id": "gen77-4",
+          "name": "伟强",
+          "info": "配范富珍，生二子：启洪、启明",
+          "fatherId": "gen76-2",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-5",
+          "name": "伟清",
+          "info": "配陈丽霞，生子：彩光；生二女：彩红、小红",
+          "fatherId": "gen76-2",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-6",
+          "name": "伟洪",
+          "info": "配刘思娟，生二子：文光、文龙；生二女：彩芬、彩芳",
+          "fatherId": "gen76-2",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-7",
+          "name": "伟雄",
+          "info": "配廖清芳，生子：曾竞；生二女：曾杏、曾艳",
+          "fatherId": "gen76-2",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-8",
+          "name": "伟龙",
+          "info": "配宁玉容，生子：远平；生女：曾利",
+          "fatherId": "gen76-2",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-9",
+          "name": "伟钦",
+          "info": "配李氏、陈丽珠，生子：宇科；生女：红科",
+          "fatherId": "gen76-3",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-10",
+          "name": "伟光",
+          "info": "配范永兰，生子：余科；生女：曾思",
+          "fatherId": "gen76-3",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-11",
+          "name": "伟枢",
+          "info": "配刁春英，生子：玉科；生女：佳娴",
+          "fatherId": "gen76-3",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-12",
+          "name": "伟彬",
+          "info": "配余全香，生子：科瀚",
+          "fatherId": "gen76-3",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-13",
+          "name": "平森",
+          "info": "居越南",
+          "fatherId": "gen76-4",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-14",
+          "name": "焕新",
+          "info": "配陈银英，生四子：曾权、曾光、曾德、曾雄；生女：红珍",
+          "fatherId": "gen76-5",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-15",
+          "name": "焕森",
+          "info": "配钟莲香，生子：环坤；生三女：妙珍、爱珍、爱兰",
+          "fatherId": "gen76-5",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-16",
+          "name": "金波",
+          "info": "配范仕娟、刘菊芳，生子：曾龙；生三女：利芳、曾青、小清",
+          "fatherId": "gen76-6",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-17",
+          "name": "春胜",
+          "info": "配张华娣，生三子：宏群、宏中、宏林；生三女：梅芳、惠芳、仕芳",
+          "fatherId": "gen76-7",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-18",
+          "name": "胜威",
+          "info": "配柳娟，生二子：远林、远昌；生二女：双媚、苑媚",
+          "fatherId": "gen76-8",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-19",
+          "name": "元松",
+          "info": "配陈运招，生子：思仁",
+          "fatherId": "gen76-9",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-20",
+          "name": "云松",
+          "info": "配陈春红，生子：远文；生二女：远群、陕妹",
+          "fatherId": "gen76-9",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-21",
+          "name": "添松",
+          "info": "配陈小英，生三子：远芬、远清、宝清",
+          "fatherId": "gen76-9",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-22",
+          "name": "元波",
+          "info": "配曾永香，生二女：灵芳、惠芳",
+          "fatherId": "gen76-10",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-23",
+          "name": "汉波",
+          "info": "配钟桂香，生二子：思平、思文",
+          "fatherId": "gen76-10",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-24",
+          "name": "文波",
+          "info": "配王丽英，生子：南康；生二女：妙玲、妙丽",
+          "fatherId": "gen76-10",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-25",
+          "name": "志波",
+          "info": "配钟美香，生子：幸平；生二女：柳兰、思兰",
+          "fatherId": "gen76-10",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-26",
+          "name": "祥仁",
+          "info": "佛海立子，配陈胜招，生二子：令标、令辉；生三女：小红、小玲、坚强",
+          "fatherId": "gen76-11",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-27",
+          "name": "茂祥",
+          "info": "配张华香，生二子：伟新、伟朋",
+          "fatherId": "gen76-13",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-28",
+          "name": "茂文",
+          "info": "配何苑琼，生二子：伟导、伟东",
+          "fatherId": "gen76-13",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-29",
+          "name": "茂强",
+          "info": "配肖利平，生二子：伟春、伟胜；生女：飞霞",
+          "fatherId": "gen76-13",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-30",
+          "name": "泽华",
+          "info": "配肖文英，生子：新彬；生二女：小玲、伟林",
+          "fatherId": "gen76-13",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-31",
+          "name": "凤元",
+          "info": "配潘清英，生二子：碧新、碧凡；生女：碧霞",
+          "fatherId": "gen76-14",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-32",
+          "name": "伟元",
+          "info": "配廖惠兰，生二子：海平、海清；生女：海利",
+          "fatherId": "gen76-14",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-33",
+          "name": "云添",
+          "info": "配陈立英，生三子：文华、文勇、曾文",
+          "fatherId": "gen76-15",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-34",
+          "name": "维添",
+          "info": "配刘仕娟，生二子：文幸、文凯；生女：文苑",
+          "fatherId": "gen76-15",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-35",
+          "name": "宏添",
+          "info": "配刘小苑，生子：文俊；生女：文意",
+          "fatherId": "gen76-15",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-36",
+          "name": "佛贤",
+          "info": "配陈玉珍，生四子：福添、梅添、环添、文添；生五女：春香、利香、小兰、小香、小梅",
+          "fatherId": "gen76-16",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-37",
+          "name": "浩辉",
+          "info": "配黄巧莲，生子：桦鑫；生女：云红",
+          "fatherId": "gen76-17",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-38",
+          "name": "文辉",
+          "info": "配翠娟，生子：梓朋；生女：金灵",
+          "fatherId": "gen76-17",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-39",
+          "name": "佛佑",
+          "info": "配潘利金，生二子：建成、展威；生女：翠娟",
+          "fatherId": "gen76-18",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-40",
+          "name": "佑添",
+          "info": "配张利香，生二子：建彬、文彬",
+          "fatherId": "gen76-19",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-41",
+          "name": "佑华",
+          "info": "配钟桂英，生二子：育彬、志彬",
+          "fatherId": "gen76-19",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-42",
+          "name": "佑中",
+          "info": "配肖秀娟，生子：幸彬",
+          "fatherId": "gen76-19",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-43",
+          "name": "伟云",
+          "info": "配王金美，生子：宇彬；生女：淑珍",
+          "fatherId": "gen76-20",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-44",
+          "name": "伟浩",
+          "info": "配黄妙美，生子：晓波",
+          "fatherId": "gen76-21",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-45",
+          "name": "伟华",
+          "info": "配张小兰，生二子：建波、柳波",
+          "fatherId": "gen76-21",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-46",
+          "name": "伟添",
+          "info": "配林新红，生女：曾瑜",
+          "fatherId": "gen76-21",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-47",
+          "name": "玉庭",
+          "info": "坤华立子，配王玉香，生子：国光；生四女：小琼、菊珍、菊英、菊兰",
+          "fatherId": "gen76-22",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-48",
+          "name": "汉湘",
+          "info": "配彭辉英，生子：国胜；生二女：利安、利娜",
+          "fatherId": "gen76-22",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-49",
+          "name": "伟良",
+          "info": "配刘莉娇，生子：远东；生女：春兰",
+          "fatherId": "gen76-23",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-50",
+          "name": "经伟",
+          "info": "配□氏，生女：曾怡",
+          "fatherId": "gen76-24",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-51",
+          "name": "新恩",
+          "info": "配王秋玲，生子：裕浩",
+          "fatherId": "gen76-25",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-52",
+          "name": "新伟",
+          "info": "配古艳容，生子：裕权",
+          "fatherId": "gen76-25",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-53",
+          "name": "晋朋",
+          "info": "配陈灵香，生二子：汉良、汉清；生女：桂英",
+          "fatherId": "gen76-26",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-54",
+          "name": "晋湘",
+          "info": "配湖氏，生二子：汉松、□□（过房五华）",
+          "fatherId": "gen76-26",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-55",
+          "name": "振南",
+          "info": "配廖招娣，生子：枢良",
+          "fatherId": "gen76-27",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen77-56",
+          "name": "振坤",
+          "info": "配□氏，居广州",
+          "fatherId": "gen76-27",
+          "birthYear": null,
+          "deathYear": null
+        }
+      ]
+    },
+    {
+      "title": "第78世",
+      "people": [
+        {
+          "id": "gen78-1",
+          "name": "新球",
+          "info": "配肖银珍，生子：曾宇；生五女：桂香、桂珍、桂兰、桂玉、桂美",
+          "fatherId": "gen77-1",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-2",
+          "name": "新宇",
+          "info": "配邝桃红，生女：曾好，居江西",
+          "fatherId": "gen77-2",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-3",
+          "name": "新春",
+          "info": "配彭秀，生二子：煜琦、煜珺；生女：琬明，居江西",
+          "fatherId": "gen77-2",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-4",
+          "name": "新民",
+          "info": "配陈小梅，生女：雯倩",
+          "fatherId": "gen77-3",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-5",
+          "name": "新龙",
+          "info": "配李燕勤，居江西",
+          "fatherId": "gen77-3",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-6",
+          "name": "令标",
+          "info": "配朱云华，生二子：清兴、清旺；生女：凤娇",
+          "fatherId": "gen77-26",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-7",
+          "name": "令辉",
+          "info": "配曾惠娟，生子：曾文",
+          "fatherId": "gen77-26",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-8",
+          "name": "伟新",
+          "info": "配李彩婷",
+          "fatherId": "gen77-27",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-9",
+          "name": "伟朋",
+          "info": "配曾惠霞，生子：志豪；生女：咏怡",
+          "fatherId": "gen77-27",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-10",
+          "name": "伟导",
+          "info": "配范春红，生女：宇灵",
+          "fatherId": "gen77-28",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-11",
+          "name": "伟东",
+          "info": "配张伟聪，生子：宇豪",
+          "fatherId": "gen77-28",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-12",
+          "name": "伟春",
+          "info": "配曾秋红，生女：冬玲",
+          "fatherId": "gen77-29",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-13",
+          "name": "碧新",
+          "info": "配叶银娇，生子：圣豪",
+          "fatherId": "gen77-31",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-14",
+          "name": "碧凡",
+          "info": "配陈丽，生子：圣杰；生女：圣美",
+          "fatherId": "gen77-31",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-15",
+          "name": "文华",
+          "info": "云添长子",
+          "fatherId": "gen77-33",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-16",
+          "name": "文勇",
+          "info": "云添次子",
+          "fatherId": "gen77-33",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-17",
+          "name": "曾文",
+          "info": "云添三子",
+          "fatherId": "gen77-33",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-18",
+          "name": "文幸",
+          "info": "维添长子",
+          "fatherId": "gen77-34",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-19",
+          "name": "文凯",
+          "info": "维添次子",
+          "fatherId": "gen77-34",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-20",
+          "name": "文俊",
+          "info": "宏添子",
+          "fatherId": "gen77-35",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-21",
+          "name": "福添",
+          "info": "配陈惠芳，生二子：建强、建美",
+          "fatherId": "gen77-36",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-22",
+          "name": "梅添",
+          "info": "配陈庆梅，生子：新强；生女：考娟",
+          "fatherId": "gen77-36",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-23",
+          "name": "环添",
+          "info": "配黄小娟，生子：振强；生女：考玲",
+          "fatherId": "gen77-36",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-24",
+          "name": "文添",
+          "info": "配陈秋英，生子：国强；生女：巧媚",
+          "fatherId": "gen77-36",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-25",
+          "name": "建成",
+          "info": "佛佑长子",
+          "fatherId": "gen77-39",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-26",
+          "name": "展威",
+          "info": "佛佑次子",
+          "fatherId": "gen77-39",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-27",
+          "name": "建彬",
+          "info": "佑添长子",
+          "fatherId": "gen77-40",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-28",
+          "name": "文彬",
+          "info": "佑添次子",
+          "fatherId": "gen77-40",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-29",
+          "name": "育彬",
+          "info": "佑华长子",
+          "fatherId": "gen77-41",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-30",
+          "name": "志彬",
+          "info": "佑华次子",
+          "fatherId": "gen77-41",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-31",
+          "name": "幸彬",
+          "info": "配□氏，生女：巧玲",
+          "fatherId": "gen77-42",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-32",
+          "name": "晓波",
+          "info": "配汪晓霞，生女：紫瑶",
+          "fatherId": "gen77-44",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-33",
+          "name": "建波",
+          "info": "伟华长子",
+          "fatherId": "gen77-45",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-34",
+          "name": "柳波",
+          "info": "配曾美玲",
+          "fatherId": "gen77-45",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-35",
+          "name": "国光",
+          "info": "玉庭子",
+          "fatherId": "gen77-47",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-36",
+          "name": "国胜",
+          "info": "配彭利琼，生女：海平",
+          "fatherId": "gen77-48",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-37",
+          "name": "远东",
+          "info": "配张小兰",
+          "fatherId": "gen77-49",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-38",
+          "name": "裕浩",
+          "info": "新恩子",
+          "fatherId": "gen77-51",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-39",
+          "name": "裕权",
+          "info": "新伟子",
+          "fatherId": "gen77-52",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-40",
+          "name": "汉良",
+          "info": "配春梅，生二子：史明、史新；生女：史珍",
+          "fatherId": "gen77-53",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-41",
+          "name": "汉清",
+          "info": "配张氏、曾利香，生二子：镜波、东新；生女：苑红",
+          "fatherId": "gen77-53",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-42",
+          "name": "汉松",
+          "info": "配张伟英，生子：镜辉；生二女：思娟、□□",
+          "fatherId": "gen77-54",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-43",
+          "name": "枢良",
+          "info": "配刘春英，生二子：德志、德慧（居广州）",
+          "fatherId": "gen77-55",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-44",
+          "name": "思仁",
+          "info": "配沙宇虹，生女：凯萍",
+          "fatherId": "gen77-19",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-45",
+          "name": "远文",
+          "info": "配张秀英，生二女：德瑞、茄玲",
+          "fatherId": "gen77-20",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-46",
+          "name": "远芬",
+          "info": "配陈志丽，生子：润龙；生女：韵婷",
+          "fatherId": "gen77-21",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-47",
+          "name": "远清",
+          "info": "配陈丽，生女：嘉倩",
+          "fatherId": "gen77-21",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-48",
+          "name": "宝清",
+          "info": "配李玲玲",
+          "fatherId": "gen77-21",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-49",
+          "name": "思平",
+          "info": "配卢坤招，生子：龙东",
+          "fatherId": "gen77-23",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-50",
+          "name": "思文",
+          "info": "配刘美玲，生子：林辉；生二女：曾裕、海苑",
+          "fatherId": "gen77-23",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-51",
+          "name": "南康",
+          "info": "居香港",
+          "fatherId": "gen77-24",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-52",
+          "name": "幸平",
+          "info": "配罗妙兰",
+          "fatherId": "gen77-25",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-53",
+          "name": "曾权",
+          "info": "配张思霞，生子：志聪；生女：兰芳",
+          "fatherId": "gen77-14",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-54",
+          "name": "曾光",
+          "info": "配刘惠群，生子：志文；生女：妙兰",
+          "fatherId": "gen77-14",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-55",
+          "name": "曾德",
+          "info": "配王苑梅，生子：志科；生女：志娟",
+          "fatherId": "gen77-14",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-56",
+          "name": "曾雄",
+          "info": "配廖爱琴，生子：志",
+          "fatherId": "gen77-14",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-57",
+          "name": "环坤",
+          "info": "配□氏，生女：育媚",
+          "fatherId": "gen77-15",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-58",
+          "name": "曾龙",
+          "info": "配陈仕清，生子：康辉",
+          "fatherId": "gen77-16",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-59",
+          "name": "宏群",
+          "info": "配沈添红，生子：文聪；生二女：苑聪、苑玲",
+          "fatherId": "gen77-17",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-60",
+          "name": "宏中",
+          "info": "配陈美华，生二子：曾旺、兴旺",
+          "fatherId": "gen77-17",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen78-61",
+          "name": "宏林",
+          "info": "配陈伟珍，生子：文森；生女：文坚",
+          "fatherId": "gen77-17",
+          "birthYear": null,
+          "deathYear": null
+        }
+      ]
+    },
+    {
+      "title": "第79世",
+      "people": [
+        {
+          "id": "gen79-1",
+          "name": "史明",
+          "info": "配卓惠琴，生女：宇君",
+          "fatherId": "gen78-40",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen79-2",
+          "name": "史新",
+          "info": "配邓群欢，生子：嘉润",
+          "fatherId": "gen78-40",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen79-3",
+          "name": "镜波",
+          "info": "配廖洪苑，生子：凯鑫；生女：凯玲",
+          "fatherId": "gen78-41",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen79-4",
+          "name": "东新",
+          "info": "配苑红，生二子：凯华、凯旋",
+          "fatherId": "gen78-41",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen79-5",
+          "name": "文聪",
+          "info": "配范惠霞",
+          "fatherId": "gen78-59",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen79-6",
+          "name": "新强",
+          "info": "配陈映青，生子：曾明；生女：秋茹",
+          "fatherId": "gen78-22",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen79-7",
+          "name": "振强",
+          "info": "配彭氏",
+          "fatherId": "gen78-23",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen79-8",
+          "name": "建威",
+          "info": "配曾望梅，生二子：远涛、文涛",
+          "fatherId": "gen78-25",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen79-9",
+          "name": "展威",
+          "info": "配陈晓苑，生子：嘉鑫",
+          "fatherId": "gen78-26",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen79-10",
+          "name": "权山",
+          "info": "配曾燕霞，生四女：淑婷、淑敏、淑君、淑桦",
+          "fatherId": null,
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen79-11",
+          "name": "权浩",
+          "info": "配李小红，生二子：一峰、二峰",
+          "fatherId": null,
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen79-12",
+          "name": "权平",
+          "info": "配陈兰珍，生子：文峰；生二女：晓苑、文苑",
+          "fatherId": null,
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen79-13",
+          "name": "权华",
+          "info": "配黄美霞，生子：志锋；生女：曾红",
+          "fatherId": null,
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen79-14",
+          "name": "权政",
+          "info": "配叶敏珍，生子：宝峰；生女：曾华",
+          "fatherId": null,
+          "birthYear": null,
+          "deathYear": null
+        }
+      ]
+    },
+    {
+      "title": "第80世",
+      "people": [
+        {
+          "id": "gen80-1",
+          "name": "一峰",
+          "info": "妻郭辛兰",
+          "fatherId": "gen79-11",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen80-2",
+          "name": "嘉润",
+          "info": "史新子",
+          "fatherId": "gen79-2",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen80-3",
+          "name": "远涛",
+          "info": "建威长子",
+          "fatherId": "gen79-8",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen80-4",
+          "name": "文涛",
+          "info": "建威次子",
+          "fatherId": "gen79-8",
+          "birthYear": null,
+          "deathYear": null
+        },
+        {
+          "id": "gen80-5",
+          "name": "嘉鑫",
+          "info": "展威子",
+          "fatherId": "gen79-9",
+          "birthYear": null,
+          "deathYear": null
         }
       ]
     }
