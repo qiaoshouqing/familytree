@@ -33,7 +33,7 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
       });
 
       const data = await response.json();
-      
+
       if (data.success) {
         setDebug(`登录成功！欢迎 ${name}`);
         // 保存token到localStorage
@@ -101,30 +101,30 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
               {loading ? '验证中...' : '进入家谱'}
             </button>
           </div>
-          
+
           <div className="mt-4 text-center">
-            <button 
-              type="button" 
+            <button
+              type="button"
               onClick={showHint}
               className="text-xs text-gray-500 hover:text-gray-700"
             >
               需要帮助？
             </button>
           </div>
-          
+
           {debug && (
             <div className="mt-4 p-2 bg-gray-100 rounded text-xs text-gray-700 whitespace-pre-line">
               {debug}
             </div>
           )}
-          
+
           <div className="mt-6 pt-4 border-t border-gray-200">
             <p className="text-center text-sm text-blue-600 font-medium">
-              这是一个开源项目，访问我们的 
-              <Link 
-                href="https://github.com/qiaoshouqing/familytree" 
+              这是一个开源项目，访问我们的
+              <Link
+                href="https://github.com/benshandebiao/familytree"
                 target="_blank"
-                rel="noopener noreferrer" 
+                rel="noopener noreferrer"
                 className="ml-1 inline-flex items-center text-blue-700 underline font-semibold hover:text-blue-900 hover:bg-blue-50 rounded px-1 transition-colors"
               >
                 GitHub仓库

@@ -6,7 +6,7 @@ import { getFamilyFullName } from '@/utils/config';
 const Footer = () => {
   // 获取完整姓氏名称（带"氏"字）
   const familyFullName = getFamilyFullName();
-  
+
   return (
     <footer className="bg-white border-t border-gray-200 mt-12">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -26,9 +26,9 @@ const Footer = () => {
               本项目是开源的家族谱系软件，欢迎在GitHub上查看。
             </p>
             <p className="text-sm leading-6 text-gray-600">
-              <Link 
-                href="https://github.com/qiaoshouqing/familytree" 
-                target="_blank" 
+              <Link
+                href="https://github.com/benshandebiao/familytree"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:text-blue-800 hover:underline"
               >
@@ -42,9 +42,9 @@ const Footer = () => {
             <h3 className="text-sm font-semibold leading-6 text-gray-900">友情链接</h3>
             <ul role="list" className="mt-2 space-y-2">
               <li>
-                <Link 
-                  href="https://fatemaster.ai" 
-                  target="_blank" 
+                <Link
+                  href="https://fatemaster.ai"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm leading-6 text-blue-600 hover:text-blue-800"
                 >
