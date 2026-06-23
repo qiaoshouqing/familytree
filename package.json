@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start -p ${PORT:-3000}",
     "lint": "next lint",
-    "init-config": "node src/scripts/exportManualData.js"
+    "init-config": "node src/scripts/exportManualData.mjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
