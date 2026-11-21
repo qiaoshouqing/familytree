@@ -14,6 +14,7 @@ You can visit [https://familytree.pomodiary.com/](https://familytree.pomodiary.c
 - Relationship connections between family members
 - Detailed personal information records
 - Optional login authentication mechanism
+- English and Chinese interface (picked from the browser language, switchable on the page)
 - Fully customizable interface and data
 
 ## Quick Start
@@ -51,6 +52,8 @@ SPECIFIC_NAME=白景琦
 
 # Surname configuration (for website title, description, and footer)
 NEXT_PUBLIC_FAMILY_NAME=白
+# Surname for the English interface, e.g. "The Bai Family Tree" (falls back to NEXT_PUBLIC_FAMILY_NAME)
+NEXT_PUBLIC_FAMILY_NAME_EN=Bai
 
 # Application port configuration
 PORT=3000
@@ -103,6 +106,38 @@ bun dev
 ```
 
 Visit [http://localhost:3000](http://localhost:3000) to view your family tree.
+
+## Languages
+
+The interface is available in English and Chinese.
+
+- On the first visit the site follows the browser language (`Accept-Language`): Chinese browsers get Chinese, everything else gets English.
+- The **English / 中文** button (top of the page and on the login screen) switches the language. The choice is saved in a `lang` cookie for a year, so the page title, `<html lang>` and meta description match it on the next visit.
+- In the English interface the title reads "The {surname} Family Tree". Set `NEXT_PUBLIC_FAMILY_NAME_EN` for the English surname; if it is empty, `NEXT_PUBLIC_FAMILY_NAME` is used.
+- Only the interface is translated. Names, generation titles and descriptions are shown exactly as written in `config/family-data.json`, so to run an English family tree just write your family in English there, for example:
+
+```json
+{
+  "generations": [
+    {
+      "title": "First Generation",
+      "people": [
+        { "id": "thomas", "name": "Thomas Hartwell", "info": "Carpenter, moved to Ohio in 1902", "birthYear": 1880, "deathYear": 1951 }
+      ]
+    },
+    {
+      "title": "Second Generation",
+      "people": [
+        { "id": "walter", "name": "Walter Hartwell", "info": "Eldest son", "fatherId": "thomas", "birthYear": 1905 }
+      ]
+    }
+  ]
+}
+```
+
+With login enabled, the login name is matched against the `name` field (or `SPECIFIC_NAME`), so with English data people log in with English names.
+
+- UI strings live in `src/i18n/messages.ts`. To add another language, add a dictionary there and extend `pickLocale`.
 
 ## Data Format Details
 

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { FamilyData, Person } from '@/types/family';
 import { UserIcon, CalendarIcon, UserGroupIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 import { highlightMatch } from '@/utils/search';
+import { useI18n } from '@/i18n/I18nProvider';
 
 interface FamilyTreeProps {
     familyData: FamilyData;
@@ -68,6 +69,7 @@ const PersonCard = ({
     searchInInfo?: boolean;
 }) => {
     const [expanded, setExpanded] = useState(false);
+    const { t } = useI18n();
     const father = person.fatherId ? personMap.get(person.fatherId) : undefined;
     const sons = person.id ? sonsMap.get(person.id) || [] : [];
 
@@ -110,7 +112,7 @@ const PersonCard = ({
                 {father && (
                     <div className="flex items-center gap-2 text-gray-600 text-sm mb-2">
                         <UserGroupIcon className="h-4 w-4 text-blue-500" />
-                        <span>父亲：</span>
+                        <span>{t.father}</span>
                         <button 
                             onClick={(e) => {
                                 e.stopPropagation();
@@ -128,7 +130,7 @@ const PersonCard = ({
                 {sons.length > 0 && (
                     <div className="flex flex-wrap items-center gap-2 text-gray-600 text-sm mb-2">
                         <UserGroupIcon className="h-4 w-4 text-green-500" />
-                        <span>子嗣：</span>
+                        <span>{t.children}</span>
                         {sons.map((son, index) => (
                             <span key={son.id || index}>
                                 <button 
@@ -142,7 +144,7 @@ const PersonCard = ({
                                 >
                                     {son.name}
                                 </button>
-                                {index < sons.length - 1 && <span className="mx-1">、</span>}
+                                {index < sons.length - 1 && <span className={t.childSeparator.className}>{t.childSeparator.text}</span>}
                             </span>
                         ))}
                     </div>

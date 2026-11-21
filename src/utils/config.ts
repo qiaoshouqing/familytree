@@ -80,9 +80,13 @@ export async function getAuthConfigOnServer(): Promise<AuthConfig> {
   return config;
 }
 
-// 在客户端用于获取完整的姓氏名称（带"氏"字）
-export function getFamilyFullName(): string {
+// 完整的姓氏名称：中文带"氏"字（白氏），英文是 The + 英文姓氏（The Bai）。
+// 英文姓氏取 NEXT_PUBLIC_FAMILY_NAME_EN，没配时沿用 NEXT_PUBLIC_FAMILY_NAME。
+export function getFamilyFullName(lang: 'zh' | 'en' = 'zh'): string {
   const config = getPublicConfigFromEnv();
+  if (lang === 'en') {
+    return `The ${process.env.NEXT_PUBLIC_FAMILY_NAME_EN || process.env.NEXT_PUBLIC_FAMILY_NAME || 'Family'}`;
+  }
   return `${config.familyName}氏`;
 }
 

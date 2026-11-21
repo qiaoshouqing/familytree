@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { MagnifyingGlassIcon, XMarkIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
 import { UI_CONFIG } from '@/utils/constants';
+import { useI18n } from '@/i18n/I18nProvider';
 
 interface SearchBarProps {
     onSearch: (searchTerm: string, filters: SearchFilters) => void;
@@ -21,6 +22,7 @@ export interface SearchFilters {
 
 export default function SearchBar({ onSearch, generations }: SearchBarProps) {
     const [searchTerm, setSearchTerm] = useState('');
+    const { t } = useI18n();
     const [showFilters, setShowFilters] = useState(false);
     const [filters, setFilters] = useState<SearchFilters>({
         searchTerm: '',
@@ -95,7 +97,7 @@ export default function SearchBar({ onSearch, generations }: SearchBarProps) {
                 <input
                     type="text"
                     className={`${UI_CONFIG.SEARCH_INPUT_WIDTH} pl-9 pr-8 py-2 bg-white border border-gray-200 rounded-md text-sm text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 focus:border-blue-200 shadow-sm transition-colors`}
-                    placeholder="搜索"
+                    placeholder={t.search}
                     value={searchTerm}
                     onChange={(e) => {
                         setSearchTerm(e.target.value);
@@ -133,7 +135,7 @@ export default function SearchBar({ onSearch, generations }: SearchBarProps) {
                     <div className="p-4 space-y-3">
                         {/* 搜索选项 */}
                         <div className="flex items-center justify-between text-sm">
-                            <span className="text-gray-700">包含详细信息</span>
+                            <span className="text-gray-700">{t.includeDetails}</span>
                             <input
                                 type="checkbox"
                                 checked={filters.searchInInfo}
@@ -145,7 +147,7 @@ export default function SearchBar({ onSearch, generations }: SearchBarProps) {
                         {/* 世代筛选 */}
                         {generations.length > 0 && (
                             <div>
-                                <h4 className="text-sm font-medium text-gray-700 mb-2">世代</h4>
+                                <h4 className="text-sm font-medium text-gray-700 mb-2">{t.generation}</h4>
                                 <div className="flex flex-wrap gap-1">
                                     {generations.map((generation) => (
                                         <button
@@ -166,11 +168,11 @@ export default function SearchBar({ onSearch, generations }: SearchBarProps) {
 
                         {/* 年份范围 */}
                         <div>
-                            <h4 className="text-sm font-medium text-gray-700 mb-2">年份</h4>
+                            <h4 className="text-sm font-medium text-gray-700 mb-2">{t.years}</h4>
                             <div className="flex items-center gap-2">
                                 <input
                                     type="number"
-                                    placeholder="起始"
+                                    placeholder={t.yearFrom}
                                     className="flex-1 px-2 py-1 border border-gray-200 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-300"
                                     value={filters.yearRange.start || ''}
                                     onChange={(e) => handleSearch(undefined, { 
@@ -180,7 +182,7 @@ export default function SearchBar({ onSearch, generations }: SearchBarProps) {
                                 <span className="text-gray-400 text-xs">-</span>
                                 <input
                                     type="number"
-                                    placeholder="结束"
+                                    placeholder={t.yearTo}
                                     className="flex-1 px-2 py-1 border border-gray-200 rounded text-sm focus:outline-none focus:ring-1 focus:ring-blue-300"
                                     value={filters.yearRange.end || ''}
                                     onChange={(e) => handleSearch(undefined, { 
@@ -196,7 +198,7 @@ export default function SearchBar({ onSearch, generations }: SearchBarProps) {
                                     onClick={clearSearch}
                                     className="text-xs text-gray-600 hover:text-gray-800 underline"
                                 >
-                                    清除所有筛选
+                                    {t.clearFilters}
                                 </button>
                             </div>
                         )}

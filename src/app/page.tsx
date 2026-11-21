@@ -8,7 +8,9 @@ import LoginForm from './components/LoginForm';
 import SearchBar, { SearchFilters } from './components/SearchBar';
 import { useFamilyData } from '../data/familyDataWithIds';
 import { QueueListIcon, Squares2X2Icon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
-import { getPublicConfig, getFamilyFullName } from '@/utils/config';
+import { getPublicConfig } from '@/utils/config';
+import { useI18n } from '@/i18n/I18nProvider';
+import LanguageSwitch from './components/LanguageSwitch';
 import { searchFamilyData, createFilteredFamilyData, SearchResult } from '@/utils/search';
 import { buildFamilyTree } from '@/utils/familyTree';
 import { AUTH_CONFIG } from '@/utils/constants';
@@ -33,7 +35,7 @@ export default function Home() {
   // 使用useMemo缓存配置，避免每次render重新计算
   const publicConfig = useMemo(() => getPublicConfig(), []);
   const requireAuth = publicConfig.isAuthRequired;
-  const familyFullName = useMemo(() => getFamilyFullName(), []);
+  const { t, family } = useI18n();
 
   // 使用useMemo缓存树状结构数据的构建
   const treeData = useMemo(() => {
@@ -151,20 +153,21 @@ export default function Home() {
                 className="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 <ArrowRightOnRectangleIcon className="h-4 w-4 mr-1" />
-                退出
+                {t.logout}
               </button>
             </div>
           )}
           
-          <h1 className="text-3xl font-bold text-gray-900 text-center">
-            {familyFullName}族谱
+          {/* 窄屏下退出按钮是绝对定位的，给标题让出一行，免得压住长标题 */}
+          <h1 className={`text-3xl font-bold text-gray-900 text-center ${requireAuth && isAuthenticated ? 'pt-10 sm:pt-0' : ''}`}>
+            {t.siteTitle(family)}
           </h1>
           <p className="mt-2 text-gray-500 text-center text-sm tracking-wide">
-            传承历史 · 延续文化
+            {t.tagline}
           </p>
           {requireAuth && userName && (
             <p className="mt-1 text-blue-500 text-center text-xs">
-              欢迎您，{familyFullName}族人
+              {t.welcome({ family, user: userName })}
             </p>
           )}
           <div className="mt-6 flex justify-center">
@@ -179,7 +182,7 @@ export default function Home() {
                 onClick={() => setViewMode('list')}
               >
                 <QueueListIcon className="h-4 w-4 mr-2" />
-                列表视图
+                {t.listView}
               </button>
               <button
                 type="button"
@@ -191,7 +194,7 @@ export default function Home() {
                 onClick={() => setViewMode('tree')}
               >
                 <Squares2X2Icon className="h-4 w-4 mr-2" />
-                树状视图
+                {t.treeView}
               </button>
             </div>
           </div>
@@ -201,13 +204,14 @@ export default function Home() {
       <div className="flex-grow">
         {dataError && (
           <div className="text-center text-red-500 mb-4">
-            {dataError} - 使用默认数据
+            {t.dataError}
           </div>
         )}
         
         <div className="max-w-7xl mx-auto px-4 mb-6">
           {/* 搜索框 */}
-          <div className="flex justify-end mb-4">
+          <div className="flex justify-between items-center gap-2 mb-4">
+            <LanguageSwitch />
             <SearchBar 
               onSearch={handleSearch}
               generations={familyData.generations.map(g => g.title)}
@@ -218,14 +222,14 @@ export default function Home() {
           {searchResults.length === 0 && (searchTerm || searchFilters.selectedGenerations.length > 0 || 
            searchFilters.yearRange.start || searchFilters.yearRange.end) && (
             <div className="text-center text-gray-500 py-8">
-              <p className="text-lg">未找到匹配的家族成员</p>
-              <p className="text-sm">请尝试修改搜索条件</p>
+              <p className="text-lg">{t.noMatchTitle}</p>
+              <p className="text-sm">{t.noMatchHint}</p>
             </div>
           )}
           
           {searchResults.length > 0 && (
             <div className="text-sm text-gray-600 text-center mb-4">
-              找到 <span className="font-medium text-blue-600">{searchResults.length}</span> 个匹配结果
+              {t.matchBefore}<span className="font-medium text-blue-600">{searchResults.length}</span>{searchResults.length === 1 ? t.matchAfterOne : t.matchAfter}
             </div>
           )}
         </div>

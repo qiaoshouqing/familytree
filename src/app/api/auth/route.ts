@@ -1,10 +1,13 @@
 import { NextResponse } from 'next/server';
 import { getAuthConfigOnServer, getFamilyDataOnServer } from '@/utils/config';
+import { isLocale, MESSAGES } from '@/i18n/messages';
 
 export async function POST(request: Request) {
+  let t = MESSAGES.zh;
   try {
     const body = await request.json();
-    const { name } = body;
+    const { name, lang } = body;
+    if (isLocale(lang)) t = MESSAGES[lang];
     
     console.log('收到验证请求:', { name });
     
@@ -34,7 +37,7 @@ export async function POST(request: Request) {
       
       return NextResponse.json({ 
         success: false, 
-        message: '请输入正确的姓名' 
+        message: t.authWrongSpecific 
       }, { status: 401 });
     }
     
@@ -67,14 +70,14 @@ export async function POST(request: Request) {
     
     return NextResponse.json({ 
       success: false, 
-      message: '姓名不正确' 
+      message: t.authWrongAll 
     }, { status: 401 });
     
   } catch (error) {
     console.error('验证过程中出错:', error);
     return NextResponse.json({ 
       success: false, 
-      message: '验证失败，请重试' 
+      message: t.authServerError 
     }, { status: 500 });
   }
 } 
