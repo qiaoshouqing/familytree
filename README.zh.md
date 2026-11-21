@@ -14,6 +14,7 @@
 - 家族成员之间的关系链接
 - 个人详细信息记录
 - 可选的登录验证机制
+- 中英文双语界面（按浏览器语言自动选择，也可以在页面上切换）
 - 完全可定制的界面和数据
 
 ## 快速开始
@@ -51,6 +52,8 @@ SPECIFIC_NAME=白景琦
 
 # 姓氏配置（用于网站标题、描述和页脚）
 NEXT_PUBLIC_FAMILY_NAME=白
+# 英文界面用的姓氏，如 The Bai Family Tree（不填就沿用 NEXT_PUBLIC_FAMILY_NAME）
+NEXT_PUBLIC_FAMILY_NAME_EN=Bai
 
 # 应用端口号配置
 PORT=3000
@@ -103,6 +106,16 @@ bun dev
 ```
 
 访问 [http://localhost:3000](http://localhost:3000) 查看您的家族谱。
+
+## 界面语言
+
+界面支持中文和英文：
+
+- 第一次打开时按浏览器语言（`Accept-Language`）选择：中文浏览器显示中文，其他语言显示英文。
+- 页面上方（登录页在右上角）有 **English / 中文** 按钮可以切换，选择记在 `lang` cookie 里一年，下次打开时网页标题、`<html lang>` 和描述都跟着这个选择。
+- 英文界面的标题是 “The 姓氏 Family Tree”，英文姓氏用 `NEXT_PUBLIC_FAMILY_NAME_EN` 配置，不填就沿用 `NEXT_PUBLIC_FAMILY_NAME`。
+- 只翻译界面文字。人名、世代标题、事迹都按 `config/family-data.json` 原样显示；想做英文族谱，直接在这个文件里用英文写自己的家族即可。开启登录时，登录名同样按 `name` 字段（或 `SPECIFIC_NAME`）匹配。
+- 界面文案在 `src/i18n/messages.ts`，要加别的语言就在这里加一份词典，并在 `pickLocale` 里加上识别。
 
 ## 数据格式详解
 

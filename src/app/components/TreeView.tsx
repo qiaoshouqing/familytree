@@ -5,6 +5,7 @@ import { FamilyData, Person } from '@/types/family';
 import { ChevronDownIcon, ChevronRightIcon, UserIcon, CalendarIcon } from '@heroicons/react/24/outline';
 import { highlightMatch } from '@/utils/search';
 import { ANIMATION_DELAYS, CSS_CLASSES } from '@/utils/constants';
+import { useI18n } from '@/i18n/I18nProvider';
 
 interface TreeViewProps {
   data: FamilyData;
@@ -178,6 +179,7 @@ const findAllMatches = (person: Person, searchTerm: string, searchInInfo: boolea
 
 export default function TreeView({ data, searchTerm, searchInInfo }: TreeViewProps) {
   const [firstMatchId, setFirstMatchId] = useState<string | null>(null);
+  const { t } = useI18n();
   // 找到第一代人物作为树的根节点
   const rootPeople = data.generations[0]?.people || [];
   
@@ -202,7 +204,7 @@ export default function TreeView({ data, searchTerm, searchInInfo }: TreeViewPro
   return (
     <div className="max-w-7xl mx-auto px-4">
       <div className="bg-white rounded-lg shadow-sm p-6">
-        <h2 className="text-xl font-bold text-gray-800 mb-6">家族树状图</h2>
+        <h2 className="text-xl font-bold text-gray-800 mb-6">{t.treeTitle}</h2>
         <div className="overflow-x-auto">
           {rootPeople.map((person, index) => (
             <TreeNode 
